@@ -29,7 +29,7 @@ systemd:
         LimitNOFILE=40000
         [Install]
         WantedBy=multi-user.target
-    - name: docker.service
+    - name: containerd.service
       enabled: true
     - name: wait-for-dns.service
       enabled: true
@@ -74,7 +74,7 @@ systemd:
           --volume /run:/run \
           --volume /sys/fs/cgroup:/sys/fs/cgroup \
           --volume /var/lib/calico:/var/lib/calico:ro \
-          --volume /var/lib/docker:/var/lib/docker \
+          --volume /var/lib/containerd:/var/lib/containerd \
           --volume /var/lib/kubelet:/var/lib/kubelet:rshared,z \
           --volume /var/log:/var/log \
           --volume /var/run/lock:/var/run/lock:z \
@@ -90,6 +90,8 @@ systemd:
           --client-ca-file=/etc/kubernetes/ca.crt \
           --cluster_dns=${cluster_dns_service_ip} \
           --cluster_domain=${cluster_domain_suffix} \
+          --container-runtime=remote \
+          --container-runtime-endpoint=unix:///run/containerd/containerd.sock \
           --healthz-port=0 \
           --kubeconfig=/var/lib/kubelet/kubeconfig \
           --network-plugin=cni \
