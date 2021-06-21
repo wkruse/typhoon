@@ -11,6 +11,7 @@ Notable changes between versions.
   * Continue to support Terraform v0.13.x, v0.14.4+, and v0.15.x
 * Update Cilium from v1.9.6 to [v1.10.1](https://github.com/cilium/cilium/releases/tag/v1.10.1)
 * Update Calico from v3.19.0 to [v3.19.1](https://github.com/projectcalico/calico/releases/tag/v3.19.1)
+* Update CoreDNS from v1.8.0 to [v1.8.4]()
 
 ### Addons
 
@@ -25,6 +26,7 @@ Notable changes between versions.
 
 * Extend experimental Fedora CoreOS arm64 support with Cilium
   * CNI provider may now be `flannel` or `cilium` (new)
+* Workaround Cilium cross node traffic issue
 
 #### Bare-Metal
 
